@@ -11,12 +11,14 @@ h1 {
 }
 
 .grid {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     font-size: 2em;
     gap: 10px 10px;
     grid-template: repeat(10, 20px) / repeat(10, 20px);
+    height: 400px;
     margin-left: 35%;
-    max-width: 33%;
+    max-width: 400px;
     position: relative;
     text-align: center;
 }
