@@ -16,6 +16,8 @@ h1 {
   text-align: center;
 }
 
+
+
 .grid {
   align-items: center;
   display: flex;
@@ -31,7 +33,11 @@ h1 {
   outline: 2px solid #3e5856;
   height: 40px;
   width: 40px;
-  }
+}
+
+.bomb {
+  background-color: red;
+}
 
 #start-game {
   display: flex;
