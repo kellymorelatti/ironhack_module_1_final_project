@@ -18,7 +18,6 @@ h1 {
 
 .grid {
   align-items: center;
-  background-color: #6dc3bc;
   display: flex;
   flex-wrap: wrap;
   height: 430px;
@@ -27,11 +26,26 @@ h1 {
 }
 
 .grid div {
-  background-color: #6dc3bc;
-  border: 1.5px solid #659490;
+  background-color: #63a19c;
+  border: 1.5px solid  #bdc8c7;
+  outline: 2px solid #3e5856;
   height: 40px;
   width: 40px;
   }
+
+#start-game {
+  display: flex;
+  justify-content: center;
+}
+#start-button {
+  background-color: rgb(114, 49, 20);
+  color: white;
+  font-size: 2em;
+  font-weight: 700;
+  height: 50px;
+  margin: 20px auto;
+  width: 200px;
+}
 
 .stats {
   align-items: center;
@@ -39,18 +53,10 @@ h1 {
   color: white;
   display: flex;
   flex-direction: row;
-  font-size: 3em;
+  font-size: 2.5em;
   height: 65px;
   justify-content: space-around;
-  width: 430px;
-}
-
-#start-game {
-  display: flex;
-  justify-content: center;
-}
-#start-button {
-  margin: 20px auto;
+  width: 433px;
 }
 
 
