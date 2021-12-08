@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   //Generate Board
   function generateBoard(){
     //shuffle bombs
-    const bombTilesArr = Array(bombTotal).fill('bomb'); //created an arr with 10 indexes and fill each index w/ 'boom'
+    const bombTilesArr = Array(bombTotal).fill('bomb'); //created an arr with 10 indexes and assigned each index str 'bomb'
     const emptyTilesArr = Array(width*width - bombTotal).fill('tile'); //same for empty spaces
     const concatArray = emptyTilesArr.concat(bombTilesArr); //joined both arrays
     const shuffledTilesArr = concatArray.sort(() => Math.random() -0.5);//each time the board is generated, we get a new array with randomly positioned bombs
