@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(shuffledTilesArr);
   }
 
-  let startButton = document.getElementById('start-button');
+  let startButton = document.getElementById('easy-start-button');
   startButton.addEventListener('click', generateBoard);
 
 
