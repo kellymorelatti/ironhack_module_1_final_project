@@ -1,48 +1,48 @@
 body {
-    align-items: center;
-    background-image: url('../images/bcg.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 10px;
-    justify-content: center;
+  align-items: center;
+  background-image: url('../images/bcg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  justify-content: center;
 }
 
 h1 {
-    color: white;
-    font-size: 5em;
-    text-align: center;
+  color: white;
+  font-size: 5em;
+  text-align: center;
 }
 
 .grid {
-    align-items: center;
-    background-color: black;
-    display: flex;
-    flex-wrap: wrap;
-    height: 430px;
-    justify-content: center;
-    width: 430px;
+  align-items: center;
+  background-color: black;
+  display: flex;
+  flex-wrap: wrap;
+  height: 430px;
+  justify-content: center;
+  width: 430px;
 }
 
 .grid div {
-    background-color: #7ceae1;
-    border: 1.5px solid #659490;
-    height: 40px;
-    width: 40px;
+  background-color: #7ceae1;
+  border: 1.5px solid #659490;
+  height: 40px;
+  width: 40px;
   }
 
 .stats {
-    align-items: center;
-    background-color:rgb(19, 25, 73);
-    color: white;
-    display: flex;
-    flex-direction: row;
-    font-size: 3em;
-    height: 65px;
-    justify-content: space-around;
-    width: 430px;
+  align-items: center;
+  background-color:rgb(19, 25, 73);
+  color: white;
+  display: flex;
+  flex-direction: row;
+  font-size: 3em;
+  height: 65px;
+  justify-content: space-around;
+  width: 430px;
 }
 
 
