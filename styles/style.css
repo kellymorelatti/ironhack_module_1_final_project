@@ -34,7 +34,7 @@ h1 {
 }
 
 .bomb {
-  background-color: red;
+  background-color: red !important;
 }
 
 #start-game {
