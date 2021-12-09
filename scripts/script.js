@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let tiles = [];
   let width = 10;
   let bombTotal = 10;
+  let gameOver = false;
 
   //Generate Board
   function generateBoard() {
@@ -20,6 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
       tile.classList.add(shuffledTilesArr[i]); //add a class to each tile, named w/ the word attributed in the variable;
       grid.appendChild(tile); //insert each tile into the grid;
       tiles.push(tile); //push tile to the 'tiles' array;
+
+      //click function:
+      tile.addEventListener('click', function (e){
+        click(tile);
+      });
 
     }
     console.log(shuffledTilesArr);
@@ -62,9 +68,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  let startButton = document.getElementById('easy-start-button');
-  startButton.addEventListener('click', generateBoard);
+  let startButton = document.getElementById('easy-start-button'); //call the element with this ID to be visible to JS;
+  startButton.addEventListener('click', generateBoard); //generate board after clicking "Easy" button;
+
+
+  //click on tiles:
+  function click(tile){
+    let tileId = tile.id
+    if (gameOver){
+      return;         //check if game is over; if so, nothing happens after;
+    }
+    if (tile.classList.contains('flag') ||tile.classList.contains('verified')){
+      return;         //if tile contains a flag or is verified, nothing happens in that tile when clicked;
+    }
+    if (tile.classList.contains('bomb')){
+      console.log('💥 Boom 💥 Game Over!')  //if tile contains a bomb, display message in the console;
+    } else {
+      let allBombs = tile.getAttribute('total');
+      if (allBombs != 0){                 //if neighbouring tiles have bombs, add a verified class to the tile; and display the total number of bombs;
+        tile.classList.add('verified');
+        tile.innerHTML = allBombs;
+        return;   //nothing happens in the tile when clicked after this;
+      }
+    }
+    tile.classList.add('verified'); //after all the checks, add 'verified' to the tiles if it has 0 bombs;
+  }
+
+
+
+
+
 
 
 })
+
+
+
 

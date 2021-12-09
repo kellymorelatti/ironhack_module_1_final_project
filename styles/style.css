@@ -16,6 +16,10 @@ h1 {
   text-align: center;
 }
 
+.verified {
+  background-color: indigo !important;
+}
+
 .grid {
   align-items: center;
   display: flex;
