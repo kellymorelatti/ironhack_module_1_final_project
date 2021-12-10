@@ -33,16 +33,55 @@ document.addEventListener('DOMContentLoaded', () => {
           const bomb = document.createElement('div');
           bomb.setAttribute('id', i);
           bomb.classList.add('bomb');
+          bomb.addEventListener('click', function(){
+            click(i, j);
+          })
           grid.appendChild(bomb);
         } else {
           const tile = document.createElement('div'); //create 100 divs in HTML;
           tile.setAttribute('id', i); //attribute an id to each tile;
           tile.classList.add('tile'); //add a class to each tile, named w/ the word attributed in the variable;
+          tile.addEventListener('click', function(){
+            click(i, j);
+          })
           grid.appendChild(tile); //insert each tile into the grid;
         }
       }
     }
+  }
+   function click(x, y){       //when cell is clicked, we know the position the person pressed in the grid;
+    let bombs = countNeighBombs(x, y);
+    console.log(bombs);
+  }
 
+  //count neighbouring bombs
+  function countNeighBombs(x, y){
+    let bombCount = 0;
+    if(board[x-1] != undefined && board[x-1][y] != undefined && board[x-1][y] == 'bomb'){
+      bombCount ++;             //West
+    }
+    if(board[x+1] != undefined && board[x+1][y] != undefined && board[x+1][y] == 'bomb'){
+      bombCount ++;             //East
+    }
+    if(board[x] != undefined && board[x][y-1] != undefined && board[x][y-1] == 'bomb'){
+      bombCount ++;             //South
+    }
+    if(board[x] != undefined && board[x][y+1] != undefined  && board[x][y+1] == 'bomb'){
+      bombCount ++;             //North
+    }
+    if(board[x-1] != undefined && board[x-1][y-1] != undefined && board[x-1][y-1] == 'bomb'){
+      bombCount ++;             //Southwest
+    }
+    if(board[x+1] != undefined && board[x+1][y+1] != undefined && board[x+1][y+1] == 'bomb'){
+      bombCount ++;           //Northeast
+    }
+    if(board[x-1] != undefined && board[x-1][y+1] != undefined && board[x-1][y+1] == 'bomb'){
+      bombCount ++;
+    }                         //Northwest
+    if(board[x+1] != undefined && board[x+1][y-1] != undefined &&board[x+1][y-1] == 'bomb'){
+      bombCount ++;
+    }                         //Southeast
+    return bombCount;
   }
 
   //event for button to generate board
@@ -51,7 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
     drawBoard();
   })
 
-
+  //add a click event to each div
+  
 
 
 
