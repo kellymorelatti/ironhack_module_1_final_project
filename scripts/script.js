@@ -12,16 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let bombs = 0;
     while (bombs < 10){
       const x = Math.floor(Math.random()*board.length) + 1;
-      const y = Math.floor(Math.random()*board.length) + 1;
-      
+      const y = Math.floor(Math.random()*board.length) + 1;       //generate x and y of where to place bombs
+      if (board[x][y] != 'bomb'){
+        board[x][y] = 'bomb';                                     //check if that position already has a bomb; if it doesn't, add a 'bomb' to it
+        bombs ++;                       //increase amount of bombs to get to 10 max;
+      }
     }
   }
-
-
-
-
-
-
 
   //draw board
 
