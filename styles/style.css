@@ -16,6 +16,24 @@ h1 {
   text-align: center;
 }
 
+.grid {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  height: 430px;
+  justify-content: center;
+  width: 430px;
+}
+
+.grid > div {
+  background-color: #63a19c;
+  border: 1.5px solid  #bdc8c7;
+  color: white;
+  outline: 2px solid #3e5856;
+  height: 40px;
+  width: 40px;
+}
+
 .bomb {
   background-color: #63a19c !important;
   font-size: 3em !important;
@@ -26,27 +44,14 @@ h1 {
   font-size: 3em !important;
 }
 
-.grid {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  height: 430px;
-  justify-content: center;
-  width: 430px;
-}
-
-.grid div {
-  background-color: #63a19c;
-  border: 1.5px solid  #bdc8c7;
-  color: white;
-  outline: 2px solid #3e5856;
-  height: 40px;
-  width: 40px;
+.flag {
+  font-size: 3em !important;
+  text-align: center !important;
 }
 
 .revealed {
   background-color: #8cd1cb !important;
-  color: white !important;
+  color: rgb(158, 140, 90) !important;
   font-size: 3em !important;
   text-align: center !important;
 
@@ -56,6 +61,7 @@ h1 {
   display: flex;
   justify-content: center;
 }
+
 #easy-start-button {
   background-color: rgb(114, 49, 20);
   color: white;
