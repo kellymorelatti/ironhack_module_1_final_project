@@ -1,7 +1,10 @@
 class BoardDraw {
 
-  constructor(boardLogic){
+  constructor(boardLogic, width, height, tileSize){
     this.boardLogic = boardLogic;
+    this.width = width;
+    this.height =  height;
+    this.tileSize = tileSize;
   }
 
   createId(x, y){
@@ -9,13 +12,17 @@ class BoardDraw {
   }
 
   drawBoard() {
-    const grid = document.querySelector('.grid'); //make 'grid' element visible to js
+    const grid = document.querySelector('.grid');
+    grid.style.width = this.width;
+    grid.style.height = this.height;
 
     for (let i = 0; i < this.boardLogic.gridDimension; i++) {
       for (let j = 0; j < this.boardLogic.gridDimension; j++) {
         
         const tile = document.createElement('div'); //create 100 divs in HTML;
-        tile.classList.add('tile'); //add a class to each tile, named w/ the word attributed in the variable;
+        tile.classList.add('tile'); 
+        tile.style.width = this.tileSize;
+        tile.style.height = this.tileSize;
         tile.setAttribute('id', this.createId(i,j));
         tile.addEventListener('click', () => {
           this.click(i, j);
@@ -29,7 +36,7 @@ class BoardDraw {
     }
   }
 
-  click(x, y) {       //when cell is clicked, we know the position the person has pressed in the grid;    
+  click(x, y) {    
     if (this.boardLogic.checkGameOver(x, y)){
       alert('💥Boom!💥 Game Over');
       this.revealEntireBoard(x, y, false);
@@ -53,19 +60,11 @@ class BoardDraw {
   revealEntireBoard(x, y, isWin){
 
     const clickedTile = this.createId(x, y);
-    const clickedBomb = document.getElementById(clickedTile);    
-    clickedBomb.classList.add('clicked-bomb');
-    clickedBomb.innerHTML = '💣️';
-    clickedBomb.style.backgroundColor = '#ffff00';
-    clickedBomb.style.fontSize = '3em';
+    const clickedBomb = document.getElementById(clickedTile);
 
     for (let i = 0; i < this.boardLogic.gridDimension; i++) {
       for (let j = 0; j < this.boardLogic.gridDimension; j++) {
         const clickedTile = this.createId(i, j);
-
-        if(x == i && j == y){
-          continue;
-        }
 
         if (this.boardLogic.board[i][j] == this.boardLogic.BOMB_TILE) {
           const bomb = document.getElementById(clickedTile);
@@ -94,6 +93,13 @@ class BoardDraw {
           }
         }
       }
+    }
+
+    if (!isWin){
+      clickedBomb.classList.add('clicked-bomb');
+      clickedBomb.innerHTML = '💣️';
+      clickedBomb.style.backgroundColor = '#ffff00';
+      clickedBomb.style.fontSize = '3em';
     }
   }
 

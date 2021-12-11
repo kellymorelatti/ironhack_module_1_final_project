@@ -12,17 +12,23 @@ body {
 
 h1 {
   color: white;
-  font-size: 5em;
+  font-size: 6em;
   text-align: center;
+}
+
+#choose-level {
+  color: white;
+  font-size: 4em;
+  font-weight: 700;
+  margin-bottom: 50px;
+  margin-top: 50px;
 }
 
 .grid {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  height: 430px;
   justify-content: center;
-  width: 430px;
 }
 
 .grid > div {
@@ -30,8 +36,7 @@ h1 {
   border: 1.5px solid  #bdc8c7;
   color: white;
   outline: 2px solid #3e5856;
-  height: 40px;
-  width: 40px;
+
 }
 
 #start-game {
@@ -49,7 +54,7 @@ h1 {
   width: 200px;
 }
 
-.stats {
+#stats {
   align-items: center;
   background-color:rgb(19, 25, 73);
   color: white;
