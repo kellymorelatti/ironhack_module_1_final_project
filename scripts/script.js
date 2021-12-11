@@ -1,14 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
   //create board logic
   let board = [];
+  let adjacentNumbers = [];
   let isGameStarted = false;
+
 
   function createLogicBoard() {
     board = [];
     for (let i = 0; i < 10; i++) {       //initialize empty board (each row)
       let row = [];
-      for (let j = 0; j < 10; j++) {
-        row.push(-1);                                             //(each column)
+      for (let j = 0; j < 10; j++) {                             //(each column)
+        row.push(-1);                     // -1 for uncliked and unrevealed tiles;
       }
       board.push(row);
     }
@@ -24,41 +26,82 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     console.log(board);
   }
-
+  function calcAdjBombs(){
+    for (let i = 0; i < 10; i++) {
+      let row = [];
+      for (let j = 0; j < 10; j++) {
+        row[j] = countNeighBombs(i, j);
+      }
+      adjacentNumbers.push(row);
+    }
+  }
   //draw board
   function drawBoard() {
     const grid = document.querySelector('.grid'); //make 'grid' element visible to js
 
     for (let i = 0; i < 10; i++) {
       for (let j = 0; j < 10; j++) {
-        if (board[i][j] == 'bomb') {                     //if element in position [x][y] has a bomb, create a div, with a class of 'bomb'
-          const bomb = document.createElement('div');
-          bomb.classList.add('bomb');
-          bomb.setAttribute('id', i + "-" + j);
-          bomb.addEventListener('click', function () {
-            click(i, j);
-          })
-          grid.appendChild(bomb);                   //insert bombs to the grid;
-        } else {
-          const tile = document.createElement('div'); //create 100 divs in HTML;
-          tile.classList.add('tile'); //add a class to each tile, named w/ the word attributed in the variable;
-          tile.setAttribute('id', i + "-" + j);
-          tile.addEventListener('click', function () {
-            click(i, j);
-          })
-          grid.appendChild(tile); //insert each tile into the grid;
-        }
+       
+        const tile = document.createElement('div'); //create 100 divs in HTML;
+        tile.classList.add('tile'); //add a class to each tile, named w/ the word attributed in the variable;
+        tile.setAttribute('id', i + "-" + j);
+        tile.addEventListener('click', function () {
+          click(i, j);
+        })
+        grid.appendChild(tile); //insert each tile into the grid;
       }
     }
   }
-  function click(x, y) {       //when cell is clicked, we know the position the person has pressed in the grid;
+
+  function click(x, y) {       //when cell is clicked, we know the position the person has pressed in the grid;    
+    if (checkGameOver(x, y)){
+      alert('💥Boom!💥 Game Over');
+      revealEntireBoard(x, y);
+
+      return;
+    }
     const clickedTile = x + "-" + y;
     const gridTile = document.getElementById(clickedTile);
     gridTile.classList.add('clicked');                      //change the class of the clicked tile to 'revealed'
     const neighBombs = countNeighBombs(x, y);
     board[x][y] = neighBombs;
     revealTiles(x, y);   
+  }
 
+  //check game over
+  function checkGameOver (x, y){
+    if (board[x][y] == 'bomb'){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  //reveal entire board function
+  function revealEntireBoard(x, y){
+
+    const clickedTile = x + "-" + y;
+    const clickedBomb = document.getElementById(clickedTile);    
+    clickedBomb.classList.add('clicked-bomb');
+    clickedBomb.innerHTML = '💣️';
+    for (let i = 0; i < 10; i++) {
+      for (let j = 0; j < 10; j++) {
+        const clickedTile = i + "-" + j;
+        if (board[i][j] == 'bomb') {                     //if element in position [x][y] has a bomb, create a div, with a class of 'bomb'
+          const bomb = document.getElementById(clickedTile);
+          bomb.classList.add('bomb');
+          bomb.setAttribute('id', i + "-" + j);
+          bomb.innerHTML = '💣️';
+        } else {
+          const tile = document.getElementById(clickedTile); //create 100 divs in HTML;
+          tile.classList.add('revealed'); //add a class to each tile, named w/ the word attributed in the variable;
+          tile.setAttribute('id', i + "-" + j);
+          if (adjacentNumbers[i][j] !=0){
+            tile.innerHTML = adjacentNumbers[i][j];
+          }
+        }
+      }
+    }
   }
 
   //count neighbouring bombs
@@ -113,6 +156,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const neighBombs = countNeighBombs(x, y);
     if (neighBombs > 0){
       board[x][y] = neighBombs;
+
+      gridTile.innerHTML = board[x][y];
+
       return;
     }
 
@@ -130,9 +176,11 @@ document.addEventListener('DOMContentLoaded', () => {
   //event for button to generate board
   document.getElementById('easy-start-button').addEventListener('click', function (e) {
     if (isGameStarted){
+      document.location.reload();
       return;
     }
     createLogicBoard();
+    calcAdjBombs();
     drawBoard();
     isGameStarted = true;
     document.getElementById('easy-start-button').innerHTML = 'Refresh 😎';

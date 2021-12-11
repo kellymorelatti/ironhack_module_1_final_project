@@ -17,7 +17,13 @@ h1 {
 }
 
 .bomb {
-  background-color: red !important;
+  background-color: #63a19c !important;
+  font-size: 3em !important;
+}
+
+.clicked-bomb {
+  background-color: yellow !important;
+  font-size: 3em !important;
 }
 
 .grid {
@@ -39,7 +45,11 @@ h1 {
 }
 
 .revealed {
-  background-color: hotpink !important;
+  background-color: #8cd1cb !important;
+  color: white !important;
+  font-size: 3em !important;
+  text-align: center !important;
+
 }
 
 #start-game {
