@@ -16,8 +16,8 @@ h1 {
   text-align: center;
 }
 
-.verified {
-  background-color: white !important;
+.bomb {
+  background-color: red !important;
 }
 
 .grid {
@@ -32,13 +32,14 @@ h1 {
 .grid div {
   background-color: #63a19c;
   border: 1.5px solid  #bdc8c7;
+  color: white;
   outline: 2px solid #3e5856;
   height: 40px;
   width: 40px;
 }
 
-.bomb {
-  background-color: red !important;
+.revealed {
+  background-color: hotpink !important;
 }
 
 #start-game {
