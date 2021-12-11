@@ -34,29 +34,6 @@ h1 {
   width: 40px;
 }
 
-.bomb {
-  background-color: #63a19c !important;
-  font-size: 3em !important;
-}
-
-.clicked-bomb {
-  background-color: yellow !important;
-  font-size: 3em !important;
-}
-
-.flag {
-  font-size: 3em !important;
-  text-align: center !important;
-}
-
-.revealed {
-  background-color: #8cd1cb !important;
-  color: rgb(158, 140, 90) !important;
-  font-size: 3em !important;
-  text-align: center !important;
-
-}
-
 #start-game {
   display: flex;
   justify-content: center;
