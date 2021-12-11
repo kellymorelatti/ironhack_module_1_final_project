@@ -37,14 +37,19 @@ class BoardDraw {
   }
 
   click(x, y) {    
+    const clickedTile = this.createId(x, y);
+    const gridTile = document.getElementById(clickedTile);
+
+    if (gridTile.classList.contains('flag')){
+      return;
+    }
+
     if (this.boardLogic.checkGameOver(x, y)){
       alert('💥Boom!💥 Game Over');
       this.revealEntireBoard(x, y, false);
       return;
     }
 
-    const clickedTile = this.createId(x, y);
-    const gridTile = document.getElementById(clickedTile);
     gridTile.classList.add('clicked');                      //change the class of the clicked tile to 'revealed'
     const neighBombs = this.boardLogic.adjacentNumbers[x][y];
     this.boardLogic.board[x][y] = neighBombs;
@@ -68,7 +73,7 @@ class BoardDraw {
 
         if (this.boardLogic.board[i][j] == this.boardLogic.BOMB_TILE) {
           const bomb = document.getElementById(clickedTile);
-          bomb.classList.add('bomb');
+          bomb.classList.add('flag');
           bomb.style.backgroundColor = "#63a19c";
           bomb.style.fontSize = "3em";
           bomb.setAttribute('id', clickedTile);
