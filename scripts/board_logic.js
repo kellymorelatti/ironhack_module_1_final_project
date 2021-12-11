@@ -7,6 +7,7 @@ class BoardLogic {
     this.gridDimension = gridDimension;
     this.UNREVEALED_TILE = -1;
     this.BOMB_TILE = 'bomb';
+    this.isGameEnded = false;
   } 
   
   createLogicBoard() {

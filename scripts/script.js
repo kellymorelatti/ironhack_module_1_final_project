@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     boardLogic.createLogicBoard();
     boardDraw.drawBoard();
-    document.getElementById('easy-start-button').innerHTML = 'Refresh 😎';
+    document.getElementById('easy-start-button').innerHTML = 'Refresh';
 
   })
 

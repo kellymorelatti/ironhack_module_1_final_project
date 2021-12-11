@@ -1,5 +1,4 @@
 class BoardDraw {
-
   constructor(boardLogic, width, height, tileSize){
     this.boardLogic = boardLogic;
     this.width = width;
@@ -37,10 +36,11 @@ class BoardDraw {
   }
 
   click(x, y) {    
+
     const clickedTile = this.createId(x, y);
     const gridTile = document.getElementById(clickedTile);
 
-    if (gridTile.classList.contains('flag')){
+    if (gridTile.classList.contains('flag') || this.boardLogic.isGameEnded){
       return;
     }
 
@@ -59,11 +59,12 @@ class BoardDraw {
     if (this.boardLogic.checkWin(x,y)){
       this.revealEntireBoard(x, y, true);
       alert('Congrats 🤓! You won 🎉🎉');
+      return;
     }
   }
 
   revealEntireBoard(x, y, isWin){
-
+    this.boardLogic.isGameEnded = true;
     const clickedTile = this.createId(x, y);
     const clickedBomb = document.getElementById(clickedTile);
 
@@ -157,6 +158,9 @@ class BoardDraw {
   }
 
   addFlag(x, y){
+    if (this.boardLogic.isGameEnded){
+      return;
+    }
     const rightClickedTile = this.createId(x, y);
 
     const tile = document.getElementById(rightClickedTile);
