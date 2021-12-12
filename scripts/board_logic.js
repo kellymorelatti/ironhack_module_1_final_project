@@ -2,12 +2,12 @@ class BoardLogic {
   constructor(totalOfBombs, gridDimension){
     this.board = [];
     this.adjacentNumbers = [];
-    this.isGameStarted = false;
     this.totalOfBombs = totalOfBombs;
     this.gridDimension = gridDimension;
     this.UNREVEALED_TILE = -1;
     this.BOMB_TILE = 'bomb';
     this.isGameEnded = false;
+    this.flags = 0;
   } 
   
   createLogicBoard() {
