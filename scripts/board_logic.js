@@ -30,9 +30,10 @@ class BoardLogic {
       }
     }
     this.calcAdjBombs();
-    console.log(this.board);
   }
   
+
+  //Loop for counting adj bombs and call the method to effectively count the bombbs;
   calcAdjBombs(){
     for (let i = 0; i < this.gridDimension; i++) {
       let row = [];
@@ -43,6 +44,7 @@ class BoardLogic {
     }
   }
 
+  //Effectively count the neighbouring bombs;
   countNeighBombs(x, y) {
     let bombCount = 0;
     if (this.board[x] != undefined && this.board[x][y + 1] != undefined && this.board[x][y + 1] == this.BOMB_TILE) {
@@ -72,6 +74,7 @@ class BoardLogic {
     return bombCount;
   }
 
+  //Verify if the player has won the game;
   checkWin (){
     let coveredTiles = 0;
     for (let i = 0; i < this.gridDimension; i++) {
@@ -88,6 +91,7 @@ class BoardLogic {
     }
   }
 
+  //Verify if the player has lost
   checkGameOver (x, y){
     if (this.board[x][y] == this.BOMB_TILE){
       return true;
