@@ -4,8 +4,27 @@ class BoardDraw {
     this.width = width;
     this.height =  height;
     this.tileSize = tileSize;
+    this.initialTime = Date.now();
+    this.timer = window.setInterval(() => this.checkTime(), 100);
   }
 
+
+  checkTime() {
+    let timeDifference = Date.now() - this.initialTime;
+    let formatted = this.convertTime(timeDifference);
+    document.getElementById('timer').innerHTML = '' + formatted;
+  }
+
+  convertTime(miliseconds) {
+    let totalSeconds = Math.floor(miliseconds / 1000);
+    let minutes = Math.floor(totalSeconds / 60);
+    let twoDigitMinutes = ("00" + minutes).slice(-2);
+    let seconds = totalSeconds - minutes * 60;
+    let twoDigitSeconds = ("00" + seconds).slice(-2);
+    let totalTime = twoDigitMinutes + ':' + twoDigitSeconds;
+    return totalTime;
+  }
+  
   createId(x, y){
     return x + "-" + y;
   }
@@ -45,8 +64,8 @@ class BoardDraw {
     }
 
     if (this.boardLogic.checkGameOver(x, y)){
-      alert('💥Boom!💥 Game Over');
       this.revealEntireBoard(x, y, false);
+      alert('💥Boom!💥 Game Over');
       return;
     }
 
@@ -58,7 +77,8 @@ class BoardDraw {
 
     if (this.boardLogic.checkWin(x,y)){
       this.revealEntireBoard(x, y, true);
-      alert('Congrats 🤓! You won 🎉🎉');
+      const totalTime = document.getElementById('timer').innerHTML;
+      alert(`Congrats 🤓! You completed the game in ${totalTime} 🎉🎉`);
       return;
     }
   }
@@ -67,6 +87,8 @@ class BoardDraw {
     this.boardLogic.isGameEnded = true;
     const clickedTile = this.createId(x, y);
     const clickedBomb = document.getElementById(clickedTile);
+
+    clearTimeout(this.timer);
 
     for (let i = 0; i < this.boardLogic.gridDimension; i++) {
       for (let j = 0; j < this.boardLogic.gridDimension; j++) {
@@ -106,6 +128,9 @@ class BoardDraw {
       clickedBomb.innerHTML = '💣️';
       clickedBomb.style.backgroundColor = '#ffff00';
       clickedBomb.style.fontSize = '3em';
+    } else {
+      const counter = document.getElementById('bombs-left');
+      counter.innerHTML = `💣️ ${this.boardLogic.totalOfBombs}/${this.boardLogic.totalOfBombs}`
     }
   }
 
@@ -162,17 +187,21 @@ class BoardDraw {
       return;
     }
     const rightClickedTile = this.createId(x, y);
-
     const tile = document.getElementById(rightClickedTile);
     if (tile.classList.contains('flag')){
       tile.classList.remove('flag');
       tile.innerHTML = '';
+      this.boardLogic.flags--;
     }else if (this.boardLogic.board[x][y] == this.boardLogic.UNREVEALED_TILE || this.boardLogic.board[x][y] == this.boardLogic.BOMB_TILE){
       tile.innerHTML = "🚩";
       tile.classList.add('flag');
       tile.style.fontSize = '3em';
       tile.style.textAlign = 'center';
+      this.boardLogic.flags++;
     }
+
+    const counter = document.getElementById('bombs-left');
+    counter.innerHTML = `💣️ ${this.boardLogic.flags}/${this.boardLogic.totalOfBombs}`;
   }
 
 }
