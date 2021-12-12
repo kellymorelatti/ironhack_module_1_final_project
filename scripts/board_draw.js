@@ -1,9 +1,10 @@
 class BoardDraw {
-  constructor(boardLogic, width, height, tileSize){
+  constructor(boardLogic, width, height, tileSize, fontSize){
     this.boardLogic = boardLogic;
     this.width = width;
     this.height =  height;
     this.tileSize = tileSize;
+    this.fontSize = fontSize;
     this.initialTime = Date.now();
     this.timer = window.setInterval(() => this.checkTime(), 100);
   }
@@ -133,7 +134,7 @@ class BoardDraw {
           const bomb = document.getElementById(clickedTile);
           bomb.classList.add('flag');
           bomb.style.backgroundColor = "#63a19c";
-          bomb.style.fontSize = "3em";
+          bomb.style.fontSize = this.fontSize;
           bomb.setAttribute('id', clickedTile);
           
           //place a bomb for when bombs are revealed/ flag for when all numbered tiles are correctly revealed;
@@ -145,7 +146,7 @@ class BoardDraw {
         } else {
           const tile = document.getElementById(clickedTile); 
           tile.classList.add('revealed');
-          tile.style.fontSize = '3em';
+          tile.style.fontSize = this.fontSize;
           tile.style.backgroundColor = '#8cd1cb';         //still have not figured out why, but CSS did not work on this part;
           tile.style.textAlign = 'center';
           tile.setAttribute('id', this.createId(i, j));
@@ -162,7 +163,7 @@ class BoardDraw {
       clickedBomb.classList.add('clicked-bomb');
       clickedBomb.innerHTML = '💣️';
       clickedBomb.style.backgroundColor = '#ffff00';
-      clickedBomb.style.fontSize = '3em';
+      clickedBomb.style.fontSize = this.fontSize;
     } else {
       const counter = document.getElementById('bombs-left');
       counter.innerHTML = `🚩 ${this.boardLogic.totalOfBombs}/${this.boardLogic.totalOfBombs} 💣️`
@@ -194,7 +195,7 @@ class BoardDraw {
     }
 
     gridTile.classList.add('revealed');
-    gridTile.style.fontSize = '3em';
+    gridTile.style.fontSize = this.fontSize;
     gridTile.style.backgroundColor = "#8cd1cb";
     gridTile.style.textAlign = "center";
 
@@ -229,7 +230,7 @@ class BoardDraw {
     }else if (this.boardLogic.board[x][y] == this.boardLogic.UNREVEALED_TILE || this.boardLogic.board[x][y] == this.boardLogic.BOMB_TILE){
       tile.innerHTML = "🚩";
       tile.classList.add('flag');
-      tile.style.fontSize = '3em';
+      tile.style.fontSize = this.fontSize;
       tile.style.textAlign = 'center';
       this.boardLogic.flags++;
     }
