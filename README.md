@@ -1,7 +1,7 @@
 # Ironhack - Module 1 - Final Project
 ## Minesweeper
 
-Minesweeper made its first appearance in the 1960s, however it became very popular when Microsoft introduced it in Windows 3.1 version in 1992. I chose to make my version of for this project, as it was one of the first games I learned to play when I was a little kid, and I thought it would be fun to apply Javascript, HTML and CSS concepts while developing it.
+Minesweeper made its first appearance in the 1960s, however it became very popular when Microsoft introduced it in Windows 3.1 version in 1992. I chose to make my version for this project, as it was one of the first games I learned to play when I was a little kid, and I thought it would be fun to apply Javascript, HTML and CSS concepts while developing it.
 
 
 ## Rules of the game
