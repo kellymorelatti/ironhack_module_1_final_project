@@ -19,10 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-
+    //easy
     boardLogic = new BoardLogic(10, 10);
     boardDraw = new BoardDraw(boardLogic, '430px', '430px', '40px', '3em');
 
+    // boardLogic = new BoardLogic(20, 20);
+    // boardDraw = new BoardDraw(boardLogic, '660px', '660px', '30px', '2em');
 
     boardLogic.createLogicBoard();
     boardDraw.drawBoard();
