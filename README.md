@@ -15,8 +15,8 @@ The logic was applied with DOM manipulation and it was divided into the followin
 - Drawing the board after the game level (easy, medium, hard) was chosen;
 - Clicking events: 
     - when the player chooses a level
-    - clicks each tile (left or right click) revealing the sorrounding tiles that do not contain a bomb (for that, I used recursion)
-    - Or clicks the "Refresh" button
+    - clicks each tile (left or right click) revealing the sorrounding tiles that do not contain a bomb (for that, recursion was applied)
+    - or clicks the "Refresh" button
 - Starting the timer when the level is chosen and stopping it when the game ends;
 - Incrementing Flags counter every time the player right-clicks a tile; or decreasing it when a flag is removed;
 - Checking win: when all the tiles have been revealed correctly without hitting any bombs, and Win message is displayed;
@@ -25,7 +25,7 @@ The logic was applied with DOM manipulation and it was divided into the followin
 
 ## Playing the game
 
-You can play this game either by cloning this repo and opening the 'index.html' file in your browser or by accessing it directly on Github pages: https://kellymorelatti.github.io/ironhack_module_1_final_project/
+You can play this game either by cloning this repo and opening the 'index.html' file in your browser or by accessing it directly on Github Pages: https://kellymorelatti.github.io/ironhack_module_1_final_project/
 
 Enjoy! 😄
 
