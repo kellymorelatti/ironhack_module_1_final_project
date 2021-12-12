@@ -113,6 +113,12 @@ class BoardDraw {
     if (this.boardLogic.adjacentNumbers[x][y] == 6){
       tile.style.color = '#731F19';
     }
+    if (this.boardLogic.adjacentNumbers[x][y] == 7){
+      tile.style.color = '#328a23';
+    }
+    if (this.boardLogic.adjacentNumbers[x][y] == 8){
+      tile.style.color = '#cec92d';
+    }
   }
 
   //Reveal entire board once the game ended
