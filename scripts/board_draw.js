@@ -9,6 +9,7 @@ class BoardDraw {
     this.timer = window.setInterval(() => this.checkTime(), 100);
   }
 
+  //TIMER
   //Verify how much time has passed since the game started
   checkTime() {
     let timeDifference = Date.now() - this.initialTime;
@@ -78,7 +79,7 @@ class BoardDraw {
     this.boardLogic.board[x][y] = neighBombs;               //find neighbouring bombs to each tile
 
 
-    this.revealTiles(x, y);                             //calling recursion method to reveal tiles that do not have adj bombs and stop when bomb totals are found;
+    this.revealTiles(x, y);                             //calling recursive method to reveal tiles that do not have adj bombs and stop when bomb totals are found;
     this.changeNumberColor(x, y);
 
     //end game when player reveals all the tiles
