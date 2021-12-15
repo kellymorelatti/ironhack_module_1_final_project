@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('stats-section').style.visibility = 'visible';
     document.getElementById('stats-section').style.height = '65px';
     document.getElementById('stats-section').style.width = '433px';
+    document.getElementById('easy-start-button').style.visibility = 'hidden';
+    document.getElementById('hard-start-button').style.visibility = 'hidden';
+    document.getElementById('medium-start-button').innerHTML = 'Refresh';
 
 
     //change "choose level" element visibility
@@ -31,7 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     boardLogic.createLogicBoard();
     boardDraw.drawBoard();
-    document.getElementById('easy-start-button').innerHTML = 'Refresh';
+    
+    const counter = document.getElementById('bombs-left');
+    counter.innerHTML = `🚩 0/${boardLogic.totalOfBombs} 💣️`;
 
   })
     //MEDIUM LEVEL
@@ -40,7 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('medium-start-button').addEventListener('click', function (e) {
       document.getElementById('stats-section').style.visibility = 'visible';
       document.getElementById('stats-section').style.height = '65px';
-      document.getElementById('stats-section').style.width = '528px';
+      document.getElementById('stats-section').style.width = '531px';
+      document.getElementById('easy-start-button').style.visibility = 'hidden';
+      document.getElementById('hard-start-button').style.visibility = 'hidden';
+      document.getElementById('medium-start-button').innerHTML = 'Refresh';
 
 
       //change "choose level" element visibility
@@ -61,7 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       boardLogic.createLogicBoard();
       boardDraw.drawBoard();
-      document.getElementById('medium-start-button').innerHTML = 'Refresh';
+
+      const counter = document.getElementById('bombs-left');
+      counter.innerHTML = `🚩 0/${boardLogic.totalOfBombs} 💣️`;
 
     })
 
@@ -71,7 +81,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('hard-start-button').addEventListener('click', function (e) {
       document.getElementById('stats-section').style.visibility = 'visible';
       document.getElementById('stats-section').style.height = '65px';
-      document.getElementById('stats-section').style.width = '690px';
+      document.getElementById('stats-section').style.width = '693px';
+      document.getElementById('easy-start-button').style.visibility = 'hidden';
+      document.getElementById('hard-start-button').style.visibility = 'hidden';
+      document.getElementById('medium-start-button').innerHTML = 'Refresh';
 
 
       //change "choose level" element visibility
@@ -92,7 +105,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       boardLogic.createLogicBoard();
       boardDraw.drawBoard();
-      document.getElementById('hard-start-button').innerHTML = 'Refresh';
+
+      const counter = document.getElementById('bombs-left');
+      counter.innerHTML = `🚩 0/${boardLogic.totalOfBombs} 💣️`;
+
   
     })
   
