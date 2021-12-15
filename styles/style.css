@@ -53,7 +53,7 @@ footer p {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 20px;
+  margin: auto;
 }
 
 .grid > div {
