@@ -7,6 +7,10 @@ class BoardDraw {
     this.fontSize = fontSize;
     this.initialTime = Date.now();
     this.timer = window.setInterval(() => this.checkTime(), 100);
+    this.bombSound = new Audio('./sounds/bomb.wav');
+    this.bombSound.volume = 0.05;
+    this.winSound = new Audio('./sounds/win.wav');
+    this.winSound.volume = 0.3;
   }
 
   //TIMER
@@ -70,7 +74,8 @@ class BoardDraw {
 
     if (this.boardLogic.checkGameOver(x, y)) {       //conditional for when a bomb is hit
       this.revealEntireBoard(x, y, false);
-      alert('💥Boom!💥 Game Over');
+      this.bombSound.play();
+      alert('💥Boom! 💥 Game Over!');
       return;
     }
 
@@ -85,6 +90,7 @@ class BoardDraw {
     //end game when player reveals all the tiles
     if (this.boardLogic.checkWin(x, y)) {
       this.revealEntireBoard(x, y, true);
+      this.winSound.play();
       const totalTime = document.getElementById('timer').innerHTML;
       alert(`Congrats 🤓! You've completed the game in ${totalTime} 🎉🎉`);
       return;
@@ -149,6 +155,7 @@ class BoardDraw {
             bomb.innerHTML = '🚩';
           } else {
             bomb.innerHTML = '💣️';
+
           }
         } else {
           const tile = document.getElementById(clickedTile);

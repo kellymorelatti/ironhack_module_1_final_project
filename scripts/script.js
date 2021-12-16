@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let boardDraw;
   let boardLogic;
   let timer;
+  
 
 
   //EASY LEVEL
@@ -81,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('hard-start-button').addEventListener('click', function (e) {
       document.getElementById('stats-section').style.visibility = 'visible';
       document.getElementById('stats-section').style.height = '65px';
-      document.getElementById('stats-section').style.width = '693px';
+      document.getElementById('stats-section').style.width = '578px';
       document.getElementById('easy-start-button').style.visibility = 'hidden';
       document.getElementById('hard-start-button').style.visibility = 'hidden';
       document.getElementById('medium-start-button').innerHTML = 'Refresh';
@@ -100,8 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       //Hard board;
-      boardLogic = new BoardLogic(99, 30);
-      boardDraw = new BoardDraw(boardLogic, '690px', '690px', '20px', '1.5em');
+      boardLogic = new BoardLogic(99, 25);
+      boardDraw = new BoardDraw(boardLogic, '575px', '575px', '20px', '1.5em');
 
       boardLogic.createLogicBoard();
       boardDraw.drawBoard();
